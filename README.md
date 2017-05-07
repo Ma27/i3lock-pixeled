@@ -4,6 +4,8 @@ i3lock-pixeled
 Simple i3lock helper which pixels a screenshot by scaling it down and up to get a pixeled version
 of the screen when the lock is active.
 
+![i3lock-pixeled Example](screen.png)
+
 ## Install
 
 Clone the repository using the following command:
