@@ -1,0 +1,22 @@
+#!/bin/sh
+
+set -e
+
+function takeScreenshot {
+  # take the actual screenshot
+  scrot /tmp/screen.png
+
+  # customize scaling to have a pixeled background
+  convert /tmp/screen.png -scale 10% -scale 1000% /tmp/screen.png
+}
+
+function pauseSpotify {
+  # optional feature: playerctl should pause when locking the screen
+  # NOTE: the `|| true` is needed since playerctl raises an error if no player is active
+  (playerctl pause || true) 2>/dev/null
+}
+
+# locking workflow
+pauseSpotify && \
+takeScreenshot && \
+i3lock -i /tmp/screen.png
