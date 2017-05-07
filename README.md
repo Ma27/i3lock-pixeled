@@ -13,9 +13,9 @@ of the screen when the lock is active.
 Clone the repository using the following command:
 
 ```
-wget https://github.com/Ma27/i3lock-pixeled/archive/1.0.0.tar.gz -O i3lock-pixeled-1.0.0.tar.gz
-tar -xzvf i3lock-pixeled-1.0.0.tar.gz
-cd i3lock-pixeled-1.0.0
+wget https://github.com/Ma27/i3lock-pixeled/archive/1.1.0.tar.gz -O i3lock-pixeled-1.1.0.tar.gz
+tar -xzvf i3lock-pixeled-1.1.0.tar.gz
+cd i3lock-pixeled-1.1.0
 ```
 
 Install it into `/usr/local/bin`:

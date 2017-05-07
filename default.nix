@@ -2,7 +2,7 @@ with import <nixpkgs>{};
 
 stdenv.mkDerivation rec {
   name = "i3lock-pixeled-${version}";
-  version = "1.0.0";
+  version = "1.1.0";
 
   src = ./.;
 
