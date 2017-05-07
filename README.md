@@ -8,6 +8,8 @@ of the screen when the lock is active.
 
 ## Install
 
+### Manually
+
 Clone the repository using the following command:
 
 ```
@@ -28,6 +30,12 @@ However if you'd like to place it in a different directory, you can set the `PRE
 ```
 make install PREFIX=/custom/install/target
 ```
+
+### Nix
+
+When using the `nix` package manager you can run `nix-env -f default.nix -i` to install the `i3lock-pixeled` derivation into your local profile.
+
+For development processes you can run `nix-shell` to open an isolated shell which contains all build dependencies of `i3lock-pixeled`.
 
 ## Uninstall
 
