@@ -6,9 +6,7 @@ stdenv.mkDerivation rec {
 
   src = ./.;
 
-  buildInputs = [ pkgs.i3lock pkgs.imagemagick pkgs.scrot pkgs.playerctl ];
+  buildInputs = with pkgs; [ i3lock imagemagick scrot playerctl ];
   buildPhases = [ "unpackPhase" "installPhase" ];
-  makeFlags = [
-    "PREFIX=$(out)/bin"
-  ];
+  makeFlags = [ "PREFIX=$(out)/bin" ];
 }
