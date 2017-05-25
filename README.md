@@ -33,7 +33,9 @@ make install PREFIX=/custom/install/target
 
 ### Nix
 
-When using the `nix` package manager you can run `nix-env -f default.nix -i` to install the `i3lock-pixeled` derivation into your local profile.
+`i3lock-pixeled` is available in the NixOS package set (see [NixOS/nixpkgs#25761](https://github.com/NixOS/nixpkgs/pull/25761)).
+
+Now you can install it by running `nix-env -i i3lock-pixeled`.
 
 For development processes you can run `nix-shell` to open an isolated shell which contains all build dependencies of `i3lock-pixeled`.
 
