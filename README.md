@@ -1,12 +1,19 @@
 i3lock-pixeled
 ==============
 
-Simple i3lock helper which pixels a screenshot by scaling it down and up to get a pixeled version
-of the screen when the lock is active.
+`i3lock-pixeled` is a simple helper written in `bash` to pixelate a screenshot and use
+this as background image for the lock screen.
 
 ![i3lock-pixeled Example](screen.png)
 
 ## Install
+
+### Prerequisites
+
+- `i3lock` (or `swaylock` for instance)
+- `scrot` to take a background image
+- `imagemagick` to pixelate the background image
+- (optional: `playerctl` to pause the currently used players)
 
 ### Manually
 
@@ -21,7 +28,7 @@ cd i3lock-pixeled-1.1.0
 Install it into `/usr/local/bin`:
 
 ```
-make install
+sudo make install
 ```
 
 Now the executable is accessible in `/usr/local/bin/i3lock-pixeled`.
@@ -33,15 +40,18 @@ make install PREFIX=/custom/install/target
 
 ### Nix
 
-`i3lock-pixeled` is available in the NixOS package set (see [NixOS/nixpkgs#25761](https://github.com/NixOS/nixpkgs/pull/25761)).
+`i3lock-pixeled` is available in the `nixpkgs` package set (see [NixOS/nixpkgs#25761](https://github.com/NixOS/nixpkgs/pull/25761)).
 
-Now you can install it by running `nix-env -i i3lock-pixeled`.
-
-For development processes you can run `nix-shell` to open an isolated shell which contains all build dependencies of `i3lock-pixeled`.
+Now you can install it by running `nix-env -iA nixpkgs.i3lock-pixeled`.
 
 ## Uninstall
 
 The `Makefile` contains an `uninstall` recipe as well which removes the `i3lock-pixeled` executablefrom the given prefix.
+
+## Hacking
+
+The project is `bash`-based, so it's sufficient to install all needed prerequisites or open a developer
+shell by running `nix-shell`.
 
 ## License
 
