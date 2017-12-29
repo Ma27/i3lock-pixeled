@@ -1,7 +1,4 @@
-prefix := $(PREFIX)
-ifndef PREFIX
-	prefix := /usr/local/bin
-endif
+PREFIX ?= /usr/local/bin
 
 install:
 	mkdir -p $(PREFIX)

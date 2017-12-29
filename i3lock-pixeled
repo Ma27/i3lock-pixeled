@@ -1,22 +1,31 @@
 #!/bin/sh
 
-set -e
+IMGFILE=${IMGFILE:-/tmp/screen.png}
+LOCKER=${LOCKER:-i3lock} # allow different lockers such as `swaylock`
+PLAY=0
 
 function takeScreenshot {
   # take the actual screenshot
-  scrot /tmp/screen.png
+  scrot $IMGFILE
 
   # customize scaling to have a pixeled background
-  convert /tmp/screen.png -scale 10% -scale 1000% /tmp/screen.png
+  convert $IMGFILE -scale 10% -scale 1000% $IMGFILE
 }
 
 function pauseSpotify {
   # optional feature: playerctl should pause when locking the screen
   # NOTE: the `|| true` is needed since playerctl raises an error if no player is active
-  (playerctl pause || true) 2>/dev/null
+  playerctl pause 2> /dev/null
+  if [ $? -eq 0 ]; then
+    PLAY=1
+  fi
 }
 
 # locking workflow
 pauseSpotify && \
 takeScreenshot && \
-i3lock -i /tmp/screen.png
+$LOCKER -i /tmp/screen.png --nofork
+
+if [ $PLAY -eq 1 ]; then
+  playerctl play
+fi
