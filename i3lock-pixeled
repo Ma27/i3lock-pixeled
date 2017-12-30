@@ -18,11 +18,11 @@ function pauseSpotify {
   # playerctl is allowed to fail as it's the fastest way to determine if a player
   # is currently active
   set +e
+  rs=$(playerctl status)
   playerctl pause 2> /dev/null
-  exitCode=$?
   set -e
 
-  if [ $exitCode -eq 0 ]; then
+  if [ $rs = "Playing" ]; then
     PLAY=1
   fi
 }
