@@ -4,6 +4,7 @@ set -euo pipefail
 
 IMGFILE=${IMGFILE:-/tmp/screen.png}
 LOCKER=${LOCKER:-i3lock} # allow different lockers such as `swaylock`
+PAUSE=${PAUSE:-1}
 PLAY=0
 
 function takeScreenshot {
@@ -15,15 +16,17 @@ function takeScreenshot {
 }
 
 function pauseSpotify {
-  # playerctl is allowed to fail as it's the fastest way to determine if a player
-  # is currently active
-  set +e
-  rs=$(playerctl status)
-  playerctl pause 2> /dev/null
-  set -e
+  if [ $PAUSE -eq 1 ]; then
+    # playerctl is allowed to fail as it's the fastest way to determine if a player
+    # is currently active
+    set +e
+    rs=$(playerctl status)
+    playerctl pause 2> /dev/null
+    set -e
 
-  if [ $rs = "Playing" ]; then
-    PLAY=1
+    if [ $rs = "Playing" ]; then
+      PLAY=1
+    fi
   fi
 }
 
